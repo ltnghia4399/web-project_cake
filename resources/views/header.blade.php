@@ -32,23 +32,28 @@
 					</div>
 
 					<div class="beta-comp">
+						@if(Session::has('cart'))
 						<div class="cart">
-							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i class="fa fa-chevron-down"></i></div>
+							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (@if(Session::has('cart')){{Session('cart')->totalQty}} 
+							@else (Trống) @endif) <i class="fa fa-chevron-down"></i></div>
 							<div class="beta-dropdown cart-body">
-							@if(Session::has('cart'))
 							@foreach($product_cart as $pr_cart)
 								<div class="cart-item">
 									<div class="media">
 										<a class="pull-left" href="#"><img src="source/image/product/{{$pr_cart['item']['image']}}" alt=""></a>
 										<div class="media-body">
 											<span class="cart-item-title">{{$pr_cart['item']['name']}}</span>
-											<span class="cart-item-amount">{{$pr_cart['qty']}}*<span>{{$pr_cart['item']['unit_price']}}</span></span>
+											@if($pr_cart['item']['promotion_price'] != 0)
+												<span class="cart-item-amount">{{$pr_cart['qty']}}*<span>{{number_format($pr_cart['item']['promotion_price'])}} VND</span></span>
+											@else
+												<span class="cart-item-amount">{{$pr_cart['qty']}}*<span>{{number_format($pr_cart['item']['unit_price'])}} VND</span></span>
+											@endif
 										</div>
 									</div>
 								</div>
-							@endif
+							@endforeach
 								<div class="cart-caption">
-									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">$34.55</span></div>
+									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{number_format(Session('cart')->totalPrice)}} VND</span></div>
 									<div class="clearfix"></div>
 
 									<div class="center">
@@ -58,6 +63,7 @@
 								</div>
 							</div>
 						</div> <!-- .cart -->
+						@endif
 					</div>
 				</div>
 				<div class="clearfix"></div>

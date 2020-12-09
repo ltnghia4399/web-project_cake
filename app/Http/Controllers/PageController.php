@@ -5,6 +5,8 @@ use App\Models\Slide;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\BillDetail;
+use App\Models\Cart;
+use Session;
 
 use Illuminate\Http\Request;
 
@@ -39,5 +41,14 @@ class PageController extends Controller
 
     public function GetAboutUs(){
         return view('page.gioithieu');
+    }
+
+    public function GetAddToCart(Request $req,$id){
+        $product = Product::find($id);
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($product,$id);
+        $req->session()->put('cart',$cart);
+        return redirect()->back();
     }
 }
