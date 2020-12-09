@@ -33,9 +33,9 @@ class AppServiceProvider extends ServiceProvider
                 $cart = new Cart($oldCart);
             }
             //$view->with('product_typeASP',$product_typeASP);
-            $view->with(['product_typeASP',$product_typeASP,'cart'=>Session::get('cart'),
-                        'product_cart'=>$cart->items,'totalPrice'=>$cart->totalPrice,
-                        'totalQty'=>$cart->totalQty]);
+            // $view->with(['product_typeASP',$product_typeASP,'cart'=>Session::get('cart'),
+            //             'product_cart'=>$cart->items,'totalPrice'=>$cart->totalPrice,
+            //             'totalQty'=>$cart->totalQty]);
         });
     }
 }
