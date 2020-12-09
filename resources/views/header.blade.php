@@ -35,39 +35,18 @@
 						<div class="cart">
 							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i class="fa fa-chevron-down"></i></div>
 							<div class="beta-dropdown cart-body">
+							@if(Session::has('cart'))
+							@foreach($product_cart as $pr_cart)
 								<div class="cart-item">
 									<div class="media">
-										<a class="pull-left" href="#"><img src="source/assets/dest/images/products/cart/1.png" alt=""></a>
+										<a class="pull-left" href="#"><img src="source/image/product/{{$pr_cart['item']['image']}}" alt=""></a>
 										<div class="media-body">
-											<span class="cart-item-title">Sample Woman Top</span>
-											<span class="cart-item-options">Size: XS; Colar: Navy</span>
-											<span class="cart-item-amount">1*<span>$49.50</span></span>
+											<span class="cart-item-title">{{$pr_cart['item']['name']}}</span>
+											<span class="cart-item-amount">{{$pr_cart['qty']}}*<span>{{$pr_cart['item']['unit_price']}}</span></span>
 										</div>
 									</div>
 								</div>
-
-								<div class="cart-item">
-									<div class="media">
-										<a class="pull-left" href="#"><img src="source/assets/dest/images/products/cart/2.png" alt=""></a>
-										<div class="media-body">
-											<span class="cart-item-title">Sample Woman Top</span>
-											<span class="cart-item-options">Size: XS; Colar: Navy</span>
-											<span class="cart-item-amount">1*<span>$49.50</span></span>
-										</div>
-									</div>
-								</div>
-
-								<div class="cart-item">
-									<div class="media">
-										<a class="pull-left" href="#"><img src="source/assets/dest/images/products/cart/3.png" alt=""></a>
-										<div class="media-body">
-											<span class="cart-item-title">Sample Woman Top</span>
-											<span class="cart-item-options">Size: XS; Colar: Navy</span>
-											<span class="cart-item-amount">1*<span>$49.50</span></span>
-										</div>
-									</div>
-								</div>
-
+							@endif
 								<div class="cart-caption">
 									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">$34.55</span></div>
 									<div class="clearfix"></div>
@@ -93,7 +72,7 @@
 						<li><a href="{{route('trangchu')}}">Trang chủ</a></li>
 						<li><a href="{{route('trangchu')}}">Loại Sản phẩm</a>
 							<ul class="sub-menu">
-							@foreach($product_type as $pr_type)
+							@foreach($product_typeASP as $pr_type)
 								<li><a href="{{route('loai_sanpham',$pr_type->id)}}">{{$pr_type->name}}</a></li>
 							@endforeach
 							</ul>
