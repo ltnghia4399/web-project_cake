@@ -17,7 +17,7 @@
 	<div class="container">
 		<div id="content">
 			
-			<form action="{{route('dathang')}}" method="post" class="beta-form-checkout">
+			<form action="{{route('post_dathang')}}" method="post" class="beta-form-checkout">
 				<input type="hidden" name="_token" value="{{csrf_token()}}">
 				<div class="row">
 				@if(Session::has('thongbao'))

@@ -8,7 +8,10 @@ use App\Models\Cart;
 use App\Models\BillDetail;
 use App\Models\Bill;
 use App\Models\Customer;
+use App\Models\User;
 use Session;
+use Hash;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -49,6 +52,14 @@ class PageController extends Controller
         return view('page.dathang');
     }
 
+    public function GetLogin(){
+        return view('page.dangnhap');
+    }
+
+    public function GetSignUp(){
+        return view('page.dangky');
+    }
+
     public function GetAddToCart(Request $req,$id){
         $product = Product::find($id);
         $oldCart = Session('cart')?Session::get('cart'):null;
@@ -73,7 +84,7 @@ class PageController extends Controller
     public function PostCheckOut(Request $req){
         $cart = Session::get('cart');
 
-        $customer = new Customer;
+        $customer = new Customer();
         $customer->name = $req->name;
         $customer->gender = $req->gender;
         $customer->email = $req->email;
@@ -82,7 +93,7 @@ class PageController extends Controller
         $customer->note = $req->note;
         $customer->save();
 
-        $bill = new Bill;
+        $bill = new Bill();
         $bill->id_customer = $customer->id;
         $bill->date_order = date('y-m-d');
         $bill->total = $cart->totalPrice;
@@ -91,7 +102,7 @@ class PageController extends Controller
         $bill->save();
 
         foreach($cart->items as $key => $value){
-            $billDetail = new BillDetail;
+            $billDetail = new BillDetail();
             $billDetail->id_bill = $bill->id;
             $billDetail->id_product = $key;
             $billDetail->quantity = $value['qty'];
@@ -101,5 +112,60 @@ class PageController extends Controller
 
         Session::forget('cart');
         return redirect()->back()->with('thongbao','Đặt hàng thành công');
+    }
+
+    public function PostLogin(Request $req){
+        $this->validate($req,
+        [
+            'email'=>'required',
+            'password'=>'required'
+        ],
+        [
+            'email.required'=>'Vui lòng nhập email',
+            'email.email'=>'Email không đúng định dạng',
+            'password.required'=>'Vui lòng nhập mật khẩu'
+        ]
+        );
+        $credentials = array('email'=>$req->email,
+                            'password'=>$req->password);
+        if(Auth::attempt($credentials)){
+            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+        }else{
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập thất bại']);
+        }
+    }
+
+    public function PostSignUp(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'required|email|unique:users,email',
+                'password'=>'required|min:6|max:20',
+                'fullname'=>'required',
+                're_password'=>'required|same:password'
+            ],
+            [
+                'email.required'=>'Vui lòng nhập email',
+                'email.email'=>'Không đúng định dạng email',
+                'email.unique'=>'Email đã có người sử dụng',
+                'password.required'=>'Vui lòng nhập mật khẩu',
+                're_password.same'=>'Mật khẩu không khớp nhau',
+                'password.min'=>'Mật khẩu ít nhất 6 kí tự',
+                'password.max'=>'Mật khẩu tối đa 20 kí tự'
+            ]
+            );
+            $user = new User();
+            $user->full_name = $req->fullname;
+            $user->email = $req->email;
+            $user->password = Hash::make($req->password);
+            $user->phone = $req->phone;
+            $user->address = $req->address;
+            $user->save();
+            
+            return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
+    }
+
+    public function PostLogOut(){
+        Auth::logout();
+        return redirect()->route('trangchu');
     }
 }

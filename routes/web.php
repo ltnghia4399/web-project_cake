@@ -48,6 +48,17 @@ Route::get('dat-hang',[
     'uses'=>'App\Http\Controllers\PageController@GetCheckOut'
 ]);
 
+Route::get('dang-nhap',[
+    'as'=>'dangnhap',
+    'uses'=>'App\Http\Controllers\PageController@GetLogin'
+]);
+
+Route::get('dang-ky',[
+    'as'=>'dangky',
+    'uses'=>'App\Http\Controllers\PageController@GetSignUp'
+]);
+
+
 Route::get('add-to-cart/{id}',[
     'as'=>'themgiohang',
     'uses'=>'App\Http\Controllers\PageController@GetAddToCart'
@@ -59,9 +70,26 @@ Route::get('del-cart/{id}',[
 ]);
 
 Route::post('dat-hang',[
-    'as'=>'dathang',
+    'as'=>'post_dathang',
     'uses'=>'App\Http\Controllers\PageController@PostCheckOut'
 ]);
+
+Route::post('dang-nhap',[
+    'as'=>'post_dangnhap',
+    'uses'=>'App\Http\Controllers\PageController@PostLogin'
+]);
+
+Route::post('dang-ky',[
+    'as'=>'post_dangky',
+    'uses'=>'App\Http\Controllers\PageController@PostSignUp'
+]);
+
+Route::get('dang-xuat',[
+    'as'=>'dangxuat',
+    'uses'=>'App\Http\Controllers\PageController@PostLogOut'
+]);
+
+
 // Route::get('index',function(){
 //     return view('page.trangchu');
 // });
