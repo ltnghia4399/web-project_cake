@@ -32,12 +32,13 @@ class AppServiceProvider extends ServiceProvider
             $view->with('product_typeASP',$product_typeASP);
         });
         
-        view()->composer('header',function($view){
+        view()->composer(['header','page.dathang'],function($view){
             if(Session('cart')){
                 $oldCart = Session::get('cart');
                 $cart = new Cart($oldCart);
                 $view->with(['cart'=>Session::get('cart'),
-                'product_cart'=>$cart->items,'totalPrice'=>$cart->totalPrice,
+                'product_cart'=>$cart->items,
+                'totalPrice'=>$cart->totalPrice,
                 'totalQty'=>$cart->totalQty]);
             }
         });

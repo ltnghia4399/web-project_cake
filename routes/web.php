@@ -43,6 +43,12 @@ Route::get('gioi-thieu',[
     'uses'=>'App\Http\Controllers\PageController@GetAboutUs'
 ]);
 
+Route::get('dat-hang',[
+    'as'=>'dathang',
+    'uses'=>'App\Http\Controllers\PageController@GetCheckOut'
+]);
+
+
 Route::get('add-to-cart/{id}',[
     'as'=>'themgiohang',
     'uses'=>'App\Http\Controllers\PageController@GetAddToCart'
