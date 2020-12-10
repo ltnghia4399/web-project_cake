@@ -43,11 +43,15 @@ Route::get('gioi-thieu',[
     'uses'=>'App\Http\Controllers\PageController@GetAboutUs'
 ]);
 
-Route::get('add-too-cart/{id}',[
+Route::get('add-to-cart/{id}',[
     'as'=>'themgiohang',
     'uses'=>'App\Http\Controllers\PageController@GetAddToCart'
 ]);
 
+Route::get('del-cart/{id}',[
+    'as'=>'xoagiohang',
+    'uses'=>'App\Http\Controllers\PageController@DeleteCart'
+]);
 // Route::get('index',function(){
 //     return view('page.trangchu');
 // });

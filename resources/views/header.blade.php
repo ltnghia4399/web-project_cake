@@ -34,11 +34,12 @@
 					<div class="beta-comp">
 						@if(Session::has('cart'))
 						<div class="cart">
-							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (@if(Session::has('cart')){{Session('cart')->totalQty}} 
-							@else (Trống) @endif) <i class="fa fa-chevron-down"></i></div>
+							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng 
+								({{Session('cart')->totalQty}}) <i class="fa fa-chevron-down"></i></div>
 							<div class="beta-dropdown cart-body">
 							@foreach($product_cart as $pr_cart)
 								<div class="cart-item">
+									<a class="cart-item-delete" href="{{route('xoagiohang',$pr_cart['item']['id'])}}"><i class="fa fa-times" ></i></a>
 									<div class="media">
 										<a class="pull-left" href="#"><img src="source/image/product/{{$pr_cart['item']['image']}}" alt=""></a>
 										<div class="media-body">
@@ -63,6 +64,11 @@
 								</div>
 							</div>
 						</div> <!-- .cart -->
+						@else
+						<div class="cart">
+							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng 
+									(Trống) <i class="fa fa-chevron-down"></i></div>
+						</div>
 						@endif
 					</div>
 				</div>
