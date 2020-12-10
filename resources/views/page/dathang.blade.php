@@ -17,7 +17,18 @@
 	<div class="container">
 		<div id="content">
 			
-			<form action="#" method="post" class="beta-form-checkout">
+			<form action="{{route('dathang')}}" method="post" class="beta-form-checkout">
+				<input type="hidden" name="_token" value="{{csrf_token()}}">
+				<div class="row">
+				@if(Session::has('thongbao'))
+					<h3 style="background-color: #eff5f5;
+								font-weight: bold;
+								text-align: center;padding: 25px;">
+						{{Session::get('thongbao')}}
+					</h3>
+				@endif
+				</div>
+				<div class="space40">&nbsp;</div>
 				<div class="row">
 					<div class="col-sm-6">
 						<h4>Đặt hàng</h4>
@@ -25,7 +36,7 @@
 
 						<div class="form-block">
 							<label for="name">Họ tên*</label>
-							<input type="text" id="name" placeholder="Họ tên" required>
+							<input type="text" name="name" placeholder="Họ tên" required>
 						</div>
 						<div class="form-block">
 							<label>Giới tính </label>
@@ -36,23 +47,23 @@
 
 						<div class="form-block">
 							<label for="email">Email*</label>
-							<input type="email" id="email" required placeholder="expample@gmail.com">
+							<input type="email" id="email" name="email" required placeholder="expample@gmail.com">
 						</div>
 
 						<div class="form-block">
 							<label for="adress">Địa chỉ*</label>
-							<input type="text" id="adress" placeholder="Street Address" required>
+							<input type="text" id="adress" name="address" placeholder="Street Address" required>
 						</div>
 						
 
 						<div class="form-block">
 							<label for="phone">Điện thoại*</label>
-							<input type="text" id="phone" required>
+							<input type="text" id="phone" name="phone_number" required>
 						</div>
 						
 						<div class="form-block">
 							<label for="notes">Ghi chú</label>
-							<textarea id="notes"></textarea>
+							<textarea id="notes" name="note"></textarea>
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -114,7 +125,9 @@
 								</ul>
 							</div>
 
-							<div class="text-center"><a class="beta-btn primary" href="#">Đặt hàng <i class="fa fa-chevron-right"></i></a></div>
+							<div class="text-center"> 
+									<button type="submit" class="beta-btn primary" href="#">Đặt hàng <i class="fa fa-chevron-right"></i></button>
+							</div>
 						</div> <!-- .your-order -->
 					</div>
 				</div>

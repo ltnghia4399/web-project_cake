@@ -48,7 +48,6 @@ Route::get('dat-hang',[
     'uses'=>'App\Http\Controllers\PageController@GetCheckOut'
 ]);
 
-
 Route::get('add-to-cart/{id}',[
     'as'=>'themgiohang',
     'uses'=>'App\Http\Controllers\PageController@GetAddToCart'
@@ -57,6 +56,11 @@ Route::get('add-to-cart/{id}',[
 Route::get('del-cart/{id}',[
     'as'=>'xoagiohang',
     'uses'=>'App\Http\Controllers\PageController@DeleteCart'
+]);
+
+Route::post('dat-hang',[
+    'as'=>'dathang',
+    'uses'=>'App\Http\Controllers\PageController@PostCheckOut'
 ]);
 // Route::get('index',function(){
 //     return view('page.trangchu');
