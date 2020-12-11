@@ -86,10 +86,13 @@ Route::post('dang-ky',[
 
 Route::get('dang-xuat',[
     'as'=>'dangxuat',
-    'uses'=>'App\Http\Controllers\PageController@PostLogOut'
+    'uses'=>'App\Http\Controllers\PageController@LogOut'
 ]);
 
-
+Route::get('tim-kiem',[
+    'as'=>'timkiem',
+    'uses'=>'App\Http\Controllers\PageController@Search'
+]);
 // Route::get('index',function(){
 //     return view('page.trangchu');
 // });

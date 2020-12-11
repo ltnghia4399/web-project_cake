@@ -164,8 +164,14 @@ class PageController extends Controller
             return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
 
-    public function PostLogOut(){
+    public function LogOut(){
         Auth::logout();
         return redirect()->route('trangchu');
+    }
+
+    public function Search(Request $req){
+        $product = Product::where('name','like','%'.$req->search_key.'%')
+                                    ->orWhere('unit_price',$req->search_key)->get();
+        return view('page.timkiem',compact('product'));
     }
 }
