@@ -19,10 +19,13 @@ class PageController extends Controller
 {
     public function GetIndex(){
         $slide = Slide::all();
-        $new_product = Product::where('new',1)->paginate(4);
-        $sale_product = Product::where('promotion_price','<>',0)->paginate(8);
+        $new_product = Product::where('new',1)->paginate(4,['*'],'new_product');
+        $sale_product = Product::where('promotion_price','<>',0)->paginate(8,['*'],'sale_product');
+        $below_100 = Product::where('unit_price','<=',100000)->where('promotion_price','<=',100000)->paginate(8,['*'],'below_100');
+        $below_200 = Product::where('unit_price','<=',200000)->where('promotion_price','<=',200000)->paginate(8,['*'],'below_200');
+        $below_250 = Product::where('unit_price','<=',250000)->where('promotion_price','<=',250000)->paginate(8,['*'],'below_250');
         $product = ProductType::all();
-        return view('page.trangchu',compact('slide','new_product','sale_product', 'product'));
+        return view('page.trangchu',compact('slide','new_product','sale_product', 'product','below_100','below_200','below_250'));
     }
 
     public function GetProductType($type){
@@ -63,6 +66,18 @@ class PageController extends Controller
 
     public function GetPaymentMethod(){
         return view('page.huongdanthanhtoan');
+    }
+
+    public function NewProduct(){
+        $product = ProductType::all();
+        $new_product = Product::where('new',1)->get();
+        return view('page.gamemoi', compact('new_product','product'));
+    }
+
+    public function OnSaleProduct(){
+        $product = ProductType::all();
+        $sale_product = Product::where('promotion_price','<>',0)->get();
+        return view('page.gamekhuyenmai', compact('sale_product','product'));
     }
 
     public function GetAddToCart(Request $req,$id){

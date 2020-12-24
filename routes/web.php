@@ -98,6 +98,19 @@ Route::get('huong-dan-thanh-toan',[
     'as'=>'huongdanthanhtoan',
     'uses'=>'App\Http\Controllers\PageController@GetPaymentMethod'
 ]);
+
+Route::get('game-moi',[
+    'as'=>'gamemoi',
+    'uses'=>'App\Http\Controllers\PageController@NewProduct'
+]);
+
+
+Route::get('game-khuyen-mai',[
+    'as'=>'gamekhuyenmai',
+    'uses'=>'App\Http\Controllers\PageController@OnSaleProduct'
+]);
+
+
 // Route::get('index',function(){
 //     return view('page.trangchu');
 // });

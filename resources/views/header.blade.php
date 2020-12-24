@@ -26,11 +26,11 @@
 				<div class="pull-left">
 					<a href="{{route('trangchu')}}" id="logo"><img src="source/assets/dest/images/logo-cake.png" width="200px" alt=""></a>
 				</div>
-				<div class="pull-right beta-components space-left ov">
+				<div class="pull-right beta-components">
 					<div class="space10">&nbsp;</div>
 					<div class="beta-comp">
 						<form role="search" method="get" id="searchform" action="{{route('timkiem')}}">
-					        <input type="text" value="" name="search_key" id="s" placeholder="Nhập từ khóa..." />
+					        <input type="text" value="" name="search_key" id="s" placeholder="Nhập từ khóa..."/>
 					        <button class="fa fa-search" type="submit" id="searchsubmit"></button>
 						</form>
 					</div>

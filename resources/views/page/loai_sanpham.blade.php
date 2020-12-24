@@ -23,35 +23,13 @@
 							@foreach($product as $pr)
 								<li><a href="{{route('loai_sanpham',$pr->id)}}">{{$pr->name}}</a></li>
 							@endforeach
-							<!-- <li><a href="#">Buttons</a></li>
-							<li><a href="#">Dividers</a></li>
-							<li><a href="#">Columns</a></li>
-							<li><a href="#">Icon box</a></li>
-							<li><a href="#">Notifications</a></li>
-							<li><a href="#">Progress bars and Skill meter</a></li>
-							<li><a href="#">Tabs</a></li>
-							<li><a href="#">Testimonial</a></li>
-							<li><a href="#">Video</a></li>
-							<li><a href="#">Social icons</a></li>
-							<li><a href="#">Carousel sliders</a></li>
-							<li><a href="#">Custom List</a></li>
-							<li><a href="#">Image frames &amp; gallery</a></li>
-							<li><a href="#">Google Maps</a></li>
-							<li><a href="#">Accordion and Toggles</a></li>
-							<li class="is-active"><a href="#">Custom callout box</a></li>
-							<li><a href="#">Page section</a></li>
-							<li><a href="#">Mini callout box</a></li>
-							<li><a href="#">Content box</a></li>
-							<li><a href="#">Computer sliders</a></li>
-							<li><a href="#">Pricing &amp; Data tables</a></li>
-							<li><a href="#">Process Builders</a></li> -->
 						</ul>
 					</div>
 					<div class="col-sm-9">
 						<div class="beta-products-list">
-							<h4>New Products</h4>
+							<h4>Game nổi bật</h4>
 							<div class="beta-products-details">
-								<p class="pull-left">{{count($product_type)}} styles found</p>
+								<p class="pull-left">{{count($product_type)}} sản phẩm hiện có</p>
 								<div class="clearfix"></div>
 							</div>
 
@@ -63,7 +41,7 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 										<div class="single-item-header">
-											<a href="product.html"><img src="source/image/product/{{$pr_type->image}}" alt="" height="150px"></a>
+											<a href="product.html"><img src="source/image/product/{{$pr_type->image}}" alt="" height="100px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title" style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">{{$pr_type->name}}</p>
@@ -97,9 +75,9 @@
 						<div class="space50">&nbsp;</div>
 
 						<div class="beta-products-list">
-							<h4>Another Products</h4>
+							<h4>Game khác</h4>
 							<div class="beta-products-details">
-								<p class="pull-left">{{count($another_product)}} styles found</p>
+								<p class="pull-left">{{$another_product->total()}} styles found</p>
 								<div class="clearfix"></div>
 							</div>
 							<div class="row">
@@ -110,7 +88,7 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 										<div class="single-item-header">
-											<a href="{{route('chitiet_sanpham',$ano_pr->id)}}"><img src="source\image\product\{{$ano_pr->image}}" alt="" height="150px"></a>
+											<a href="{{route('chitiet_sanpham',$ano_pr->id)}}"><img src="source\image\product\{{$ano_pr->image}}" alt="" height="100px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title" style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">{{$ano_pr->name}}</p>

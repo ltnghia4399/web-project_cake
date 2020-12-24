@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\ProductType;
 use App\Models\Cart;
 use Session;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,5 +43,7 @@ class AppServiceProvider extends ServiceProvider
                 'totalQty'=>$cart->totalQty]);
             }
         });
+
+        Paginator::useBootstrap();
     }
 }

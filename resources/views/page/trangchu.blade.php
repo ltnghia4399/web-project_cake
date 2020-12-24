@@ -42,7 +42,8 @@
 						<div class="beta-products-list">
 							<h4>Game mới cập nhật</h4>
 							<div class="beta-products-details">
-								<p class="pull-left">{{count($new_product)}} styles found</p>
+								<p class="pull-left">{{$new_product->total()}} sản phẩm hiện có</p>
+								<a class="pull-right" href="{{route('gamemoi')}}">Xem tất cả</a>
 								<div class="clearfix"></div>
 							</div>
 
@@ -74,7 +75,7 @@
 											@else
 												<a class="add-to-cart pull-left" href="{{route('dangnhap')}}"><i class="fa fa-shopping-cart"></i></a>
 											@endif
-											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$new_pr->id)}}">Detail<i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$new_pr->id)}}">Chi tiết<i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -82,7 +83,11 @@
 								</div>
 								@endforeach
 							</div>
-							<div class="row">{{$new_product->links()}}</div>
+							<div class="row">
+								<div class="col-12 text-center">
+									{{$new_product->links()}}
+								</div>
+							</div>
 						</div> <!-- .beta-products-list -->
 
 						<div class="space50">&nbsp;</div>
@@ -90,7 +95,8 @@
 						<div class="beta-products-list">
 							<h4>Game khuyến mãi</h4>
 							<div class="beta-products-details">
-								<p class="pull-left">{{count($sale_product)}} styles found</p>
+								<p class="pull-left">{{$sale_product->total()}} sản phẩm hiện có</p>
+								<a class="pull-right" href="{{route('gamekhuyenmai')}}">Xem tất cả</a>
 								<div class="clearfix"></div>
 							</div>
 							<div class="row">
@@ -115,7 +121,7 @@
 											@else
 												<a class="add-to-cart pull-left" href="{{route('dangnhap')}}"><i class="fa fa-shopping-cart"></i></a>
 											@endif
-											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$sale_pr->id)}}">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$sale_pr->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -124,7 +130,166 @@
 								
 							@endforeach
 							</div>
-							<div class="row">{{$sale_product->links()}}</div>
+							<div class="row">
+								<div class="col-12 text-center">
+									{{$sale_product->links()}}
+								</div>
+							</div>
+						</div> <!-- .beta-products-list -->
+
+						<div class="space50">&nbsp;</div>
+
+						<div class="beta-products-list">
+							<h4>Game giá tốt</h4>
+							<hr style="height:1px;border-width:0;color:gray;background-color:gray;">
+							<h6>Dưới 100.000đ</h6>
+							<div class="beta-products-details">
+							<p class="pull-left">{{$below_100->total()}} sản phẩm hiện có</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="row">
+							@foreach($below_100 as $bl_100)
+								<div class="col-sm-3">
+									<div class="single-item">
+										@if($bl_100->promotion_price != 0)
+										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
+										@endif
+										<div class="single-item-header">
+											<a href="{{route('chitiet_sanpham',$bl_100->id)}}"><img src="source/image/product/{{$bl_100->image}}" alt="" height="100px"></a>
+										</div>
+										<div class="single-item-body">
+											<p class="single-item-title" style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">{{$bl_100->name}}</p>
+											<p class="single-item-price">
+											@if($bl_100->promotion_price == 0)
+												<br>
+												<span class="flash-sale">{{number_format($bl_100->unit_price)}} VND</span>
+											@else
+												<span class="flash-del">{{number_format($bl_100->unit_price)}} VND</span>
+												<br>
+												<span class="flash-sale">{{number_format($bl_100->promotion_price)}} VND</span>
+											@endif
+											</p>
+										</div>
+										<div class="single-item-caption">
+											@if(Auth::check())
+												<a class="add-to-cart pull-left" href="{{route('themgiohang',$bl_100->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											@else
+												<a class="add-to-cart pull-left" href="{{route('dangnhap')}}"><i class="fa fa-shopping-cart"></i></a>
+											@endif
+											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$bl_100->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="space40">&nbsp;</div>
+								</div>
+								
+							@endforeach
+							</div>
+							<div class="row">
+								<div class="col-12 text-center">
+									{{$below_100->links()}}
+								</div>
+							</div>
+
+							<hr style="height:1px;border-width:0;color:gray;background-color:gray;">
+							<h6>Dưới 200.000đ</h6>
+							<div class="beta-products-details">
+							<p class="pull-left">{{$below_200->total()}} sản phẩm hiện có</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="row">
+							@foreach($below_200 as $bl_200)
+								<div class="col-sm-3">
+									<div class="single-item">
+										@if($bl_200->promotion_price != 0)
+										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
+										@endif
+										<div class="single-item-header">
+											<a href="{{route('chitiet_sanpham',$bl_200->id)}}"><img src="source/image/product/{{$bl_200->image}}" alt="" height="100px"></a>
+										</div>
+										<div class="single-item-body">
+											<p class="single-item-title" style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">{{$bl_200->name}}</p>
+											<p class="single-item-price">
+											@if($bl_200->promotion_price == 0)
+												<br>
+												<span class="flash-sale">{{number_format($bl_200->unit_price)}} VND</span>
+											@else
+												<span class="flash-del">{{number_format($bl_200->unit_price)}} VND</span>
+												<br>
+												<span class="flash-sale">{{number_format($bl_200->promotion_price)}} VND</span>
+											@endif
+											</p>
+										</div>
+										<div class="single-item-caption">
+											@if(Auth::check())
+												<a class="add-to-cart pull-left" href="{{route('themgiohang',$bl_200->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											@else
+												<a class="add-to-cart pull-left" href="{{route('dangnhap')}}"><i class="fa fa-shopping-cart"></i></a>
+											@endif
+											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$bl_200->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="space40">&nbsp;</div>
+								</div>
+								
+							@endforeach
+							</div>
+							<div class="row">
+								<div class="col-12 text-center">
+									{{$below_200->links()}}
+								</div>
+							</div>
+
+							<hr style="height:1px;border-width:0;color:gray;background-color:gray;">
+							<h6>Dưới 250.000đ</h6>
+							<div class="beta-products-details">
+							<p class="pull-left">{{$below_250->total()}} sản phẩm hiện có</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="row">
+							@foreach($below_250 as $bl_250)
+								<div class="col-sm-3">
+									<div class="single-item">
+										@if($bl_250->promotion_price != 0)
+										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
+										@endif
+										<div class="single-item-header">
+											<a href="{{route('chitiet_sanpham',$bl_250->id)}}"><img src="source/image/product/{{$bl_250->image}}" alt="" height="100px"></a>
+										</div>
+										<div class="single-item-body">
+											<p class="single-item-title" style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">{{$bl_250->name}}</p>
+											<p class="single-item-price">
+											@if($bl_250->promotion_price == 0)
+												<br>
+												<span class="flash-sale">{{number_format($bl_250->unit_price)}} VND</span>
+											@else
+												<span class="flash-del">{{number_format($bl_250->unit_price)}} VND</span>
+												<br>
+												<span class="flash-sale">{{number_format($bl_250->promotion_price)}} VND</span>
+											@endif
+											</p>
+										</div>
+										<div class="single-item-caption">
+											@if(Auth::check())
+												<a class="add-to-cart pull-left" href="{{route('themgiohang',$bl_250->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											@else
+												<a class="add-to-cart pull-left" href="{{route('dangnhap')}}"><i class="fa fa-shopping-cart"></i></a>
+											@endif
+											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$bl_250->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="space40">&nbsp;</div>
+								</div>
+								
+							@endforeach
+							</div>
+							<div class="row">
+								<div class="col-12 text-center">
+									{{$below_250->links()}}
+								</div>
+							</div>
 						</div> <!-- .beta-products-list -->
 					</div>
 				</div> <!-- end section with sidebar and main content -->

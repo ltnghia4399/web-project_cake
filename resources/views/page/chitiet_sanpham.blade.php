@@ -20,7 +20,7 @@
 				<div class="col-sm-9">
 
 					<div class="row">
-						<div class="col-sm-4">
+						<div class="col-sm-4" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding:5px;">
 								@if($product_detail->promotion_price != 0)
 									<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 								@endif
@@ -47,7 +47,7 @@
 							</div>
 							<div class="space50">&nbsp;</div>
 							<hr style="height:2px;border-width:0;color:gray;background-color:gray;">
-							<p style="font-weight:bold; font-size:25px;">MUA NGAY <a class="add-to-cart" href="{{route('themgiohang',$product_detail->id)}}"><i class="fa fa-shopping-cart"></i></a></p>
+							<a style="font-weight:bold; font-size:25px;" class="add-to-cart2" href="{{route('themgiohang',$product_detail->id)}}"><i class="fa fa-shopping-cart2"></i> MUA NGAY</a>
 						</div>
 					</div>
 
@@ -77,7 +77,7 @@
 									<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 								@endif
 									<div class="single-item-header">
-										<a href="{{route('chitiet_sanpham',$relative_pr->id)}}"><img src="source/image/product/{{$relative_pr->image}}" alt="" height="150px"></a>
+										<a href="{{route('chitiet_sanpham',$relative_pr->id)}}"><img src="source/image/product/{{$relative_pr->image}}" alt="" height="100px"></a>
 									</div>
 									<div class="single-item-body">
 										<p class="single-item-title">{{$relative_pr->name}}</p>
@@ -96,7 +96,7 @@
 										@else
 											<a class="add-to-cart pull-left" href="{{route('chitiet_sanpham',$relative_pr->id)}}"><i class="fa fa-shopping-cart"></i></a>
 										@endif
-											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$relative_pr->id)}}">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$relative_pr->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
 								</div>
@@ -118,9 +118,12 @@
 									<div class="media-body">
 										{{$new_pr->name}}
 										@if($new_pr->promotion_price == 0)
+												<br>
 												<span class="flash-sale">{{number_format($new_pr->unit_price)}} VND</span>
 										@else
+												<br>
 												<span class="flash-del">{{number_format($new_pr->unit_price)}} VND</span>
+												<br>
 												<span class="flash-sale">{{number_format($new_pr->promotion_price)}} VND</span>
 										@endif
 									</div>

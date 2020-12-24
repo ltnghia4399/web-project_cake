@@ -18,3 +18,26 @@
 	color: #fff;
 	padding: 10px 35px
 }
+
+.single-item {
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 15px;
+  width: 210px;
+}
+
+.add-to-cart2 {
+  background-color: #3a5c83;
+  height: 40px;
+  width: 200px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 2px;
+  padding-top: 5px;
+  color: white;
+}
+
+.fa-shopping-cart2:before {
+  content: "\f07a";
+  font-size: 30px;
+}
