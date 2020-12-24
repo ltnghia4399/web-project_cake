@@ -45,41 +45,29 @@
 							<div class="single-item-desc">
 								<p>{{$product_detail->description}}</p>
 							</div>
-							<div class="space20">&nbsp;</div>
-
-							<p>Options:</p>
-							<div class="single-item-options">
-								<select class="wc-select" name="color">
-									<option>Qty</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-								<a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i></a>
-								<div class="clearfix"></div>
-							</div>
+							<div class="space50">&nbsp;</div>
+							<hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+							<p style="font-weight:bold; font-size:25px;">MUA NGAY <a class="add-to-cart" href="{{route('themgiohang',$product_detail->id)}}"><i class="fa fa-shopping-cart"></i></a></p>
 						</div>
 					</div>
 
 					<div class="space40">&nbsp;</div>
 					<div class="woocommerce-tabs">
 						<ul class="tabs">
-							<li><a href="#tab-description">Description</a></li>
-							<li><a href="#tab-reviews">Reviews (0)</a></li>
+							<li><a href="#tab-description">Mô tả</a></li>
+							<li><a href="#tab-reviews">Nhận xét (0)</a></li>
 						</ul>
 
 						<div class="panel" id="tab-description">
 							<p>{{$product_detail->description}}</p>
 						</div>
 						<div class="panel" id="tab-reviews">
-							<p>No Reviews</p>
+							<p>Không có nhận xét</p>
 						</div>
 					</div>
 					<div class="space50">&nbsp;</div>
 					<div class="beta-products-list">
-						<h4>Related Products</h4>
+						<h4>Sản phẩm liên quan</h4>
 
 						<div class="row">
 							@foreach($relative_product as $relative_pr)
@@ -89,7 +77,7 @@
 									<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 								@endif
 									<div class="single-item-header">
-										<a href="{{route('chitiet_sanpham',$relative_pr->id)}}"><img src="source/image/product/{{$relative_pr->image}}" alt="" height="250px"></a>
+										<a href="{{route('chitiet_sanpham',$relative_pr->id)}}"><img src="source/image/product/{{$relative_pr->image}}" alt="" height="150px"></a>
 									</div>
 									<div class="single-item-body">
 										<p class="single-item-title">{{$relative_pr->name}}</p>
@@ -103,8 +91,12 @@
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="#"><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="#">Details <i class="fa fa-chevron-right"></i></a>
+										@if(Auth::check())
+											<a class="add-to-cart pull-left" href="{{route('themgiohang',$relative_pr->id)}}"><i class="fa fa-shopping-cart"></i></a>
+										@else
+											<a class="add-to-cart pull-left" href="{{route('chitiet_sanpham',$relative_pr->id)}}"><i class="fa fa-shopping-cart"></i></a>
+										@endif
+											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$relative_pr->id)}}">Details <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
 								</div>
@@ -117,21 +109,7 @@
 				</div>
 				<div class="col-sm-3 aside">
 					<div class="widget">
-						<h3 class="widget-title">Best Sellers</h3>
-						<div class="widget-body">
-							<div class="beta-sales beta-lists">
-								<div class="media beta-sales-item">
-									<a class="pull-left" href="product.html"><img src="source/assets/dest/images/products/sales/1.png" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- best sellers widget -->
-					<div class="widget">
-						<h3 class="widget-title">New Products</h3>
+						<h3 class="widget-title">Sản phẩm mới cập nhật</h3>
 						<div class="widget-body">
 							<div class="beta-sales beta-lists">
 							@foreach($new_product as $new_pr)

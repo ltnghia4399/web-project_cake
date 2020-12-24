@@ -63,22 +63,28 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 										<div class="single-item-header">
-											<a href="product.html"><img src="source/image/product/{{$pr_type->image}}" alt="" height="250px"></a>
+											<a href="product.html"><img src="source/image/product/{{$pr_type->image}}" alt="" height="150px"></a>
 										</div>
 										<div class="single-item-body">
-											<p class="single-item-title">{{$pr_type->name}}</p>
+											<p class="single-item-title" style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">{{$pr_type->name}}</p>
 											<p class="single-item-price">
 											@if($pr_type->promotion_price == 0)
+												<br>
 												<span class="flash-sale">{{number_format($pr_type->unit_price)}} VND</span>
 											@else
 												<span class="flash-del">{{number_format($pr_type->unit_price)}} VND</span>
+												<br>
 												<span class="flash-sale">{{number_format($pr_type->promotion_price)}} VND</span>
 											@endif
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											@if(Auth::check())
+												<a class="add-to-cart pull-left" href="{{route('themgiohang',$pr_type->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											@else
+												<a class="add-to-cart pull-left" href="{{route('dangnhap')}}"><i class="fa fa-shopping-cart"></i></a>
+											@endif
+											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$pr_type->id)}}">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -104,10 +110,10 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 										<div class="single-item-header">
-											<a href="{{route('chitiet_sanpham',$ano_pr->id)}}"><img src="source\image\product\{{$ano_pr->image}}" alt="" height="250px"></a>
+											<a href="{{route('chitiet_sanpham',$ano_pr->id)}}"><img src="source\image\product\{{$ano_pr->image}}" alt="" height="150px"></a>
 										</div>
 										<div class="single-item-body">
-											<p class="single-item-title">{{$ano_pr->name}}</p>
+											<p class="single-item-title" style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">{{$ano_pr->name}}</p>
 											<p class="single-item-price">
 											@if($ano_pr->promotion_price == 0)
 												<span class="flash-sale">{{number_format($ano_pr->unit_price)}} VND</span>
@@ -118,8 +124,12 @@
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="{{route('themgiohang',$ano_pr->id)}}"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$ano_pr->id)}}">Details <i class="fa fa-chevron-right"></i></a>
+											@if(Auth::check())
+												<a class="add-to-cart pull-left" href="{{route('themgiohang',$ano_pr->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											@else
+												<a class="add-to-cart pull-left" href="{{route('trangchu')}}"><i class="fa fa-shopping-cart"></i></a>
+											@endif
+												<a class="beta-btn primary" href="{{route('chitiet_sanpham',$ano_pr->id)}}">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>

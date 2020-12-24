@@ -93,6 +93,11 @@ Route::get('tim-kiem',[
     'as'=>'timkiem',
     'uses'=>'App\Http\Controllers\PageController@Search'
 ]);
+
+Route::get('huong-dan-thanh-toan',[
+    'as'=>'huongdanthanhtoan',
+    'uses'=>'App\Http\Controllers\PageController@GetPaymentMethod'
+]);
 // Route::get('index',function(){
 //     return view('page.trangchu');
 // });

@@ -1,21 +1,20 @@
-<div id="header">
+<div id="header" style="background-color:#101F37;">
 		<div class="header-top">
 			<div class="container">
 				<div class="pull-left auto-width-left">
 					<ul class="top-menu menu-beta l-inline">
-						<li><a href=""><i class="fa fa-home"></i> 90-92 Lê Thị Riêng, Bến Thành, Quận 1</a></li>
-						<li><a href=""><i class="fa fa-phone"></i> 0163 296 7751</a></li>
+						<li><a href="" style="color:white;"><i class="fa fa-home"></i>Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</a></li>
+						<li><a href="" style="color:white;"><i class="fa fa-phone"></i> +84 12 345 678</a></li>
 					</ul>
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
-						<li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
 						@if(Auth::check())
-							<li><a href="#">Chào bạn {{Auth::user()->full_name}}</a></li>
-							<li><a href="{{route('dangxuat')}}">Đăng xuất</a></li>
+							<li><a href="{{route('trangchu')}}" style="color:white;"> <i class="fa fa-user"></i>Chào bạn {{Auth::user()->full_name}}</a></li>
+							<li><a href="{{route('dangxuat')}}" style="color:white;">Đăng xuất</a></li>
 						@else
-							<li><a href="{{route('dangky')}}">Đăng kí</a></li>
-							<li><a href="{{route('dangnhap')}}">Đăng nhập</a></li>
+							<li><a href="{{route('dangky')}}" style="color:white;">Đăng kí</a></li>
+							<li><a href="{{route('dangnhap')}}" style="color:white;"> <i class="fa fa-user"></i>Đăng nhập</a></li>
 						@endif
 					</ul>
 				</div>
@@ -39,7 +38,7 @@
 					<div class="beta-comp">
 						@if(Session::has('cart'))
 						<div class="cart">
-							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng 
+							<div class="beta-select" style="color:white;"><i class="fa fa-shopping-cart"></i> Giỏ hàng 
 								({{Session('cart')->totalQty}}) <i class="fa fa-chevron-down"></i></div>
 							<div class="beta-dropdown cart-body">
 							@foreach($product_cart as $pr_cart)
@@ -71,7 +70,7 @@
 						</div> <!-- .cart -->
 						@else
 						<div class="cart">
-							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng 
+							<div class="beta-select"  style="color:white;"><i class="fa fa-shopping-cart"></i> Giỏ hàng 
 									(Trống) <i class="fa fa-chevron-down"></i></div>
 						</div>
 						@endif
@@ -87,15 +86,16 @@
 				<nav class="main-menu">
 					<ul class="l-inline ov">
 						<li><a href="{{route('trangchu')}}">Trang chủ</a></li>
-						<li><a href="{{route('trangchu')}}">Loại Sản phẩm</a>
+						<li><a href="{{route('trangchu')}}">Danh mục sản phẩm</a>
 							<ul class="sub-menu">
 							@foreach($product_typeASP as $pr_type)
 								<li><a href="{{route('loai_sanpham',$pr_type->id)}}">{{$pr_type->name}}</a></li>
 							@endforeach
 							</ul>
 						</li>
+						<li><a href="{{route('huongdanthanhtoan')}}">Hình thức thanh toán</a></li>
+						<li><a href="{{route('lienhe')}}">Liên hệ hợp tác</a></li>
 						<li><a href="{{route('gioithieu')}}">Giới thiệu</a></li>
-						<li><a href="{{route('lienhe')}}">Liên hệ</a></li>
 					</ul>
 					<div class="clearfix"></div>
 				</nav>

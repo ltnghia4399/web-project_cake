@@ -21,7 +21,8 @@ class PageController extends Controller
         $slide = Slide::all();
         $new_product = Product::where('new',1)->paginate(4);
         $sale_product = Product::where('promotion_price','<>',0)->paginate(8);
-        return view('page.trangchu',compact('slide','new_product','sale_product'));
+        $product = ProductType::all();
+        return view('page.trangchu',compact('slide','new_product','sale_product', 'product'));
     }
 
     public function GetProductType($type){
@@ -58,6 +59,10 @@ class PageController extends Controller
 
     public function GetSignUp(){
         return view('page.dangky');
+    }
+
+    public function GetPaymentMethod(){
+        return view('page.huongdanthanhtoan');
     }
 
     public function GetAddToCart(Request $req,$id){
@@ -129,7 +134,7 @@ class PageController extends Controller
         $credentials = array('email'=>$req->email,
                             'password'=>$req->password);
         if(Auth::attempt($credentials)){
-            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+            return redirect()->route('trangchu')->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
         }else{
             return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập thất bại']);
         }
@@ -166,6 +171,7 @@ class PageController extends Controller
 
     public function LogOut(){
         Auth::logout();
+        Session::forget('cart');
         return redirect()->route('trangchu');
     }
 
