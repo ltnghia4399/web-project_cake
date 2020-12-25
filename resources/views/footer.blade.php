@@ -6,8 +6,8 @@
 						<h4 class="widget-title">Thông tin</h4>
 						<div>
 							<ul>
-								<li><a href="{{route('trangchu')}}"><i class="fa fa-chevron-right"></i>Sinh viên thực hiện</a></li>
-								<li><a href="{{route('trangchu')}}"><i class="fa fa-chevron-right"></i>Tiến độ thực hiện</a></li>
+								<li><a href="{{route('gioithieu')}}"><i class="fa fa-chevron-right"></i>Sinh viên thực hiện</a></li>
+								<li><a href="{{route('lienhe')}}"><i class="fa fa-chevron-right"></i>Liên hệ hợp tác</a></li>
 							</ul>
 						</div>
 					</div>

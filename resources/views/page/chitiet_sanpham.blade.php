@@ -47,7 +47,11 @@
 							</div>
 							<div class="space50">&nbsp;</div>
 							<hr style="height:2px;border-width:0;color:gray;background-color:gray;">
-							<a style="font-weight:bold; font-size:25px;" class="add-to-cart2" href="{{route('themgiohang',$product_detail->id)}}"><i class="fa fa-shopping-cart2"></i> MUA NGAY</a>
+							@if(Auth::check())
+								<a style="font-weight:bold; font-size:25px;" class="add-to-cart2" href="{{route('themgiohang',$product_detail->id)}}"><i class="fa fa-shopping-cart2"></i> MUA NGAY</a>
+							@else
+								<a style="font-weight:bold; font-size:25px;" class="add-to-cart2" href="{{route('dangnhap')}}"><i class="fa fa-shopping-cart2"></i> MUA NGAY</a>
+							@endif
 						</div>
 					</div>
 
@@ -94,7 +98,7 @@
 										@if(Auth::check())
 											<a class="add-to-cart pull-left" href="{{route('themgiohang',$relative_pr->id)}}"><i class="fa fa-shopping-cart"></i></a>
 										@else
-											<a class="add-to-cart pull-left" href="{{route('chitiet_sanpham',$relative_pr->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											<a class="add-to-cart pull-left" href="{{route('dangnhap')}}"><i class="fa fa-shopping-cart"></i></a>
 										@endif
 											<a class="beta-btn primary" href="{{route('chitiet_sanpham',$relative_pr->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>

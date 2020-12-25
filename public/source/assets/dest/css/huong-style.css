@@ -9,16 +9,81 @@
 	z-index:999;
 }
 .inner-header{
-	background-color: #ffffff
+  background-color: #ffffff;
+  padding-top: 50px;
+  padding-bottom: 0px;
 }
 .inner-title,.beta-breadcrumb, .beta-breadcrumb a{
-	color: black
+  color: black;
+  font-weight: bold;
 }
+
+.header-bottom {
+  border-top: 1px solid #e3e3e3;
+  border-bottom: 1px solid #e3e3e3;
+  background: #ad5389;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
+.header-body {
+  padding: 20px 0 30px;
+  background: #ad5389;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.header-top {
+  border-bottom: 1px solid #e3e3e3;
+  height: 47px;
+  background: #ad5389;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
 .main-menu>ul.l-inline> li> a{
-	color: #fff;
+	color: white;
 	padding: 10px 35px
 }
 
+.main-menu>ul.l-inline> li> a:hover{
+  color: white;
+  background: #862d58;  /* fallback for old browsers */
+
+}
+
+
+.main-menu ul li.active> a {
+  background: transparent;
+  color: white!important;
+}
+.sub-menu li:hover, .children li:hover {
+  background: #833a3a;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.sub-menu li, .children li {
+  background: #5e1e5660;
+  color: white;
+}
+
+#searchform {
+  position: relative;
+  width: 490px;
+  display: inline-block;
+}
+
+.parent-active>a {
+  background: transparent;
+  color: white;
+}
 .single-item {
   position: relative;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -40,4 +105,14 @@
 .fa-shopping-cart2:before {
   content: "\f07a";
   font-size: 30px;
+}
+
+.aside-menu li {
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e4e4;
+}
+
+.aside-menu li:hover {
+  font-size: larger;
+  font-weight: bold;
 }

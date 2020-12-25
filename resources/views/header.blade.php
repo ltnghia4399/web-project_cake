@@ -3,8 +3,8 @@
 			<div class="container">
 				<div class="pull-left auto-width-left">
 					<ul class="top-menu menu-beta l-inline">
-						<li><a href="" style="color:white;"><i class="fa fa-home"></i>Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</a></li>
-						<li><a href="" style="color:white;"><i class="fa fa-phone"></i> +84 12 345 678</a></li>
+						<li><a href="{{route('lienhe')}}" style="color:white;"><i class="fa fa-home"></i>Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</a></li>
+						<li><a href="{{route('gioithieu')}}" style="color:white;"><i class="fa fa-phone"></i> +84 12 345 678</a></li>
 					</ul>
 				</div>
 				<div class="pull-right auto-width-right">
@@ -23,10 +23,10 @@
 		</div> <!-- .header-top -->
 		<div class="header-body">
 			<div class="container beta-relative">
-				<div class="pull-left">
-					<a href="{{route('trangchu')}}" id="logo"><img src="source/assets/dest/images/logo-cake.png" width="200px" alt=""></a>
-				</div>
-				<div class="pull-right beta-components">
+				<!-- <div class="pull-left">
+					<a href="{{route('trangchu')}}" id="logo"><img src="source/assets/dest/images/logo-cake.png" width="100px" alt=""></a>
+				</div> -->
+				<div style="margin-left: 25%;margin-right: auto;width: 60em;">
 					<div class="space10">&nbsp;</div>
 					<div class="beta-comp">
 						<form role="search" method="get" id="searchform" action="{{route('timkiem')}}">
