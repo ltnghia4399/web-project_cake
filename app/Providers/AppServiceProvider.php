@@ -37,11 +37,28 @@ class AppServiceProvider extends ServiceProvider
             if(Session('cart')){
                 $oldCart = Session::get('cart');
                 $cart = new Cart($oldCart);
+
                 $view->with(['cart'=>Session::get('cart'),
                 'product_cart'=>$cart->items,
                 'totalPrice'=>$cart->totalPrice,
                 'totalQty'=>$cart->totalQty]);
             }
+        });
+
+        view()->composer('header',function($view){
+            $apiKey = '8bb3edc19c60226b99e56655963d397a';
+            $cityId = '1586203';
+            $apiUrl = 'http://api.openweathermap.org/data/2.5/weather?id='.$cityId.'&appid='.$apiKey;
+
+            $info_json = file_get_contents($apiUrl);
+            $data = json_decode($info_json,true);
+
+            $cur_day = date("d/m/Y");
+            $cur_time = date("h:i a"); 
+            
+            $view->with(['data'=>$data,
+                        'day'=>$cur_day,
+                        'time'=>$cur_time]);
         });
 
         Paginator::useBootstrap();

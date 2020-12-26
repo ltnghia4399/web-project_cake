@@ -116,3 +116,11 @@
   font-size: larger;
   font-weight: bold;
 }
+
+.time>h5, p, img {
+  color: white;
+  margin-left: 20px;
+  font-family: 'Open Sans';
+  vertical-align: middle;
+  text-align: left;
+}

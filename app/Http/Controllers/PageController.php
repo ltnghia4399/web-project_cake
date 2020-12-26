@@ -25,6 +25,7 @@ class PageController extends Controller
         $below_200 = Product::where('unit_price','<=',200000)->where('promotion_price','<=',200000)->paginate(8,['*'],'below_200');
         $below_250 = Product::where('unit_price','<=',250000)->where('promotion_price','<=',250000)->paginate(8,['*'],'below_250');
         $product = ProductType::all();
+
         return view('page.trangchu',compact('slide','new_product','sale_product', 'product','below_100','below_200','below_250'));
     }
 

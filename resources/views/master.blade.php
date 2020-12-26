@@ -52,5 +52,13 @@
 		)
 	})
 	</script>
+
+	<!-- <script>
+		$(document).ready(function(){
+			setInterval(function(){
+				$('#time').load('app\Providers\AppServiceProvider.php')
+			},1000);
+		});
+	</script> -->
 </body>
 </html>
