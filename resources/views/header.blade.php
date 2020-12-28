@@ -26,12 +26,14 @@
 				<!-- <div class="pull-left">
 					<a href="{{route('trangchu')}}" id="logo"><img src="source/assets/dest/images/logo-cake.png" width="100px" alt=""></a>
 				</div> -->
-				<div class="pull-left time">
-					<h5>{{$data['name']}}, {{$data['sys']['country']}}</h5>
-					<p>{{$day}}</p>
-					<p>{{$time}}</p>
-					<p >Thời tiết :<img src="http://openweathermap.org/img/w/{{$data['weather'][0]['icon']}}.png" alt=""></p> 
-					<p>Nhiệt độ : 30&deg C</p>
+				<div class="pull-left">
+					<h5 class="location">{{$data['name']}}, {{$data['sys']['country']}}</h5>
+					<div class="time">
+						<p>{{$day}}</p>
+						<p id="time"></p>
+						<p>Thời tiết : <img class="location" src="http://openweathermap.org/img/w/{{$data['weather'][0]['icon']}}.png" alt=""></p> 
+						<p>Nhiệt độ : 30&deg C</p>
+					</div>
 				</div>
 				<div style="margin-left: 25%;margin-right: auto;width: 60em;">
 					<div class="space10">&nbsp;</div>

@@ -117,7 +117,7 @@
   font-weight: bold;
 }
 
-.time>h5, p, img {
+.time, .location {
   color: white;
   margin-left: 20px;
   font-family: 'Open Sans';

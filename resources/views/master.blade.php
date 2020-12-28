@@ -28,6 +28,8 @@
 
 	<!-- include js files -->
 	<script src="source/assets/dest/js/jquery.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 	<script src="source/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 	<script src="source/assets/dest/vendors/bxslider/jquery.bxslider.min.js"></script>
@@ -53,12 +55,29 @@
 	})
 	</script>
 
-	<!-- <script>
+	<script>
+
+		function addZero(i) {
+		if (i < 10) {
+			i = "0" + i;
+		}
+		return i;
+		}
 		$(document).ready(function(){
-			setInterval(function(){
-				$('#time').load('app\Providers\AppServiceProvider.php')
-			},1000);
+		  setInterval(getTime, 1000);
+			getTime();
 		});
-	</script> -->
+
+		function getTime(){
+			let date = new Date;
+		  var h = addZero(date.getHours());
+  		  var m = addZero(date.getMinutes());
+  		  var s = addZero(date.getSeconds());
+
+			var ampm = h >= 12 ? 'PM' : 'AM';
+  		  document.getElementById("time").innerHTML = h + ":" + m + ":" + s + " " + ampm;
+		}
+
+	</script>
 </body>
 </html>

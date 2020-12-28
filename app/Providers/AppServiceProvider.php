@@ -51,14 +51,14 @@ class AppServiceProvider extends ServiceProvider
             $apiUrl = 'http://api.openweathermap.org/data/2.5/weather?id='.$cityId.'&appid='.$apiKey;
 
             $info_json = file_get_contents($apiUrl);
+            
+            
             $data = json_decode($info_json,true);
 
             $cur_day = date("d/m/Y");
-            $cur_time = date("h:i a"); 
             
             $view->with(['data'=>$data,
-                        'day'=>$cur_day,
-                        'time'=>$cur_time]);
+                        'day'=>$cur_day]);
         });
 
         Paginator::useBootstrap();
